@@ -2,42 +2,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:newproject/routers/router.gr.dart';
 
-void main() {
-  runApp( MyApp());
+class SignInPage extends StatefulWidget {
+  const SignInPage({Key? key}) : super(key: key);
+
+  @override
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class MyApp extends StatelessWidget {
-   MyApp({Key? key}) : super(key: key);
-
-    final _appRouter = AppRouter();
-
+class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerDelegate: _appRouter.delegate(),      
-      routeInformationParser: _appRouter.defaultRouteParser(),
-                  
-       debugShowCheckedModeBanner: false,
-      title: 'New Project',
-      theme: ThemeData(
-    
-        primarySwatch: Colors.blue,
-      ),
-    
-    );
-  }
-}
- class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return   Scaffold(
+    return Scaffold(
         backgroundColor: Colors.purple[50],
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +34,7 @@ class _HomePageState extends State<HomePage> {
                     border: Border.all(color: Colors.white)),
                 child: const TextField(
                   decoration: InputDecoration(
-                      border: InputBorder.none, hintText: "E-mail"),
+                      border: InputBorder.none, hintText: "User Name / E-mail"),
                 ),
               ),
             ),
@@ -76,18 +51,23 @@ class _HomePageState extends State<HomePage> {
                     border: Border.all(color: Colors.white)),
                 child: const TextField(
                   decoration: InputDecoration(
-                      border: InputBorder.none, hintText: "password"),
+                      border: InputBorder.none, hintText: "Password"),
                   obscureText: true,
                 ),
               ),
             ),
             const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.00),
-              child: 
-              ElevatedButton(onPressed: (){}, style:   ButtonStyle(backgroundColor:MaterialStateProperty.all<Color>(Colors.purple)), child: const Text("sign in"),)
-            
-            ),
+                padding: const EdgeInsets.symmetric(horizontal: 25.00),
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.router.push(const ContentHomeRoute());
+                  },
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.purple)),
+                  child: const Text("sign in",style: TextStyle(fontSize: 18),),
+                )),
             const SizedBox(
               height: 20,
             ),
@@ -98,9 +78,12 @@ class _HomePageState extends State<HomePage> {
                   "Not a Member ?",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                TextButton(onPressed: (){
-          context.router.push(const SignUpRoute());}, child: const Text("REGISTER NOW"))
-             
+                TextButton(
+                  onPressed: () {
+                    context.router.push(const SignUpRoute());
+                  },
+                  child: const Text("REGISTER NOW"),
+                ),
               ],
             )
           ],
