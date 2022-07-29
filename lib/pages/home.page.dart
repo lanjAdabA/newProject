@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+String dropdownValue = ' * more categories * ';
+
 class ContentHomePage extends StatefulWidget {
   const ContentHomePage({Key? key}) : super(key: key);
 
@@ -17,39 +19,31 @@ class _HomePageState extends State<ContentHomePage> {
     {
       "type": "bamboo, decor",
       "name": " bamboo products ",
-      "assetimg": "assets/roughimages/1-800x800.png"
+      "assetimg": "assets/images/bamboovase.png"
     },
     {
       "name": " kouna products ",
-      "assetimg": "assets/roughimages/asset kounaphakside.jpg.webp"
+      "assetimg": "assets/images/kounaphakside.webp"
     },
-    {"name": "lee products ", "assetimg": "assets/images/assetmoralee.jpg"},
+    {"name": "lee products ", "assetimg": "assets/images/leemora.jpg"},
     {
       "name": "daily commodities ",
-      "assetimg": "assets/roughimages/Bamboo-Basket.webp"
+      "assetimg": "assets/images/bamboobasket.webp"
     },
-    {"name": "home decores ", "assetimg": "assets/roughimages/2-800x800.png"},
-    {"name": "wearables ", "assetimg": "assets/roughimages/8-2.png"},
+    {"name": "home decores ", "assetimg": "assets/images/bamboolamp1.png"},
+    {"name": "wearables ", "assetimg": "assets/images/bamboohairpin.png"},
   ];
   final List<Map<String, dynamic>> bestDeals = [
+    {"name": " premium kouna bag ", "assetimg": "assets/images/kounabag.jpg"},
+    {"name": " premium kouna mora ", "assetimg": "assets/images/kounamora.jpg"},
+    {"name": " yangkok ", "assetimg": "assets/images/yangkok.jpg"},
     {
-      "name": " premium kouna bag ",
-      "assetimg": "assets/images/assetladiesbag1.jpg"
+      "name": " kouna picnic bag ",
+      "assetimg": "assets/images/kounapicnicbag.jpg"
     },
-    {
-      "name": " premium kouna mora ",
-      "assetimg": "assets/images/assetkounamora.jpg"
-    },
-    {"name": "yangkok ", "assetimg": "assets/images/assetyangkok.jpg"},
-    {
-      "name": "kouna picnic bag ",
-      "assetimg": "assets/images/assetpicnicbag.jpg"
-    },
-    {
-      "name": " premium lee mora ",
-      "assetimg": "assets/images/assetmoralee.jpg"
-    },
+    {"name": " premium lee mora ", "assetimg": "assets/images/leemora.jpg"},
   ];
+
   @override
   Widget build(BuildContext context) {
     var screeensize = MediaQuery.of(context).size;
@@ -60,10 +54,54 @@ class _HomePageState extends State<ContentHomePage> {
       body: Column(
         children: [
           Expanded(
-            flex: 50,
+            flex: 60,
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                Container(
+                  color: Colors.grey[100],
+                  margin: const EdgeInsets.only(top: 5),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Shop by category"),
+                      DropdownButton(
+                        autofocus: true,
+                        value: dropdownValue,
+                        icon: const Icon(Icons.arrow_drop_down_outlined),
+                        elevation: 15,
+                        style: TextStyle(color: Colors.purple[200]),
+                        underline: Container(
+                          height: 1,
+                          color: Colors.purple[300],
+                        ),
+                        items: [
+                          ' * more categories * ',
+                          ' kouna products',
+                          ' bamboo products',
+                          ' cane products',
+                          ' wearable accessories',
+                          ' home decors ',
+                          ' house hold essentials',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownValue = newValue!;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ),
                 Container(
                   height: w / 3.5,
                   padding: const EdgeInsets.all(10),
@@ -93,16 +131,24 @@ class _HomePageState extends State<ContentHomePage> {
                         );
                       }),
                 ),
-                SizedBox(
-                  height: w / 20,
+                Divider(
+                  color: Colors.blueGrey,
+                  endIndent: w / 30,
+                  indent: w / 30,
                 ),
-                Text(
-                  "Our Recommendation",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.purple[200],
-                      fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.italic),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Padding(padding: EdgeInsets.only(left: 16)),
+                    Text(
+                      "Our Recommendation",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.purple[200],
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic),
+                    ),
+                  ],
                 ),
                 CarouselSlider(
                   options: CarouselOptions(
@@ -153,10 +199,12 @@ class _HomePageState extends State<ContentHomePage> {
               ],
             ),
           ),
-          const Divider(
-            color: Colors.grey,
+          Divider(
+            color: Colors.blueGrey,
+            endIndent: w / 30,
+            indent: w / 30,
           ),
-          // Expanded(flex: 28, child: Column())
+          Expanded(flex: 50, child: Column())
         ],
       ),
     );
