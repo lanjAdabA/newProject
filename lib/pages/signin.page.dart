@@ -66,7 +66,10 @@ class _SignInPageState extends State<SignInPage> {
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.purple)),
-                  child: const Text("sign in",style: TextStyle(fontSize: 18),),
+                  child: const Text(
+                    "sign in",
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
                 )),
             const SizedBox(
               height: 20,
@@ -82,7 +85,10 @@ class _SignInPageState extends State<SignInPage> {
                   onPressed: () {
                     context.router.push(const SignUpRoute());
                   },
-                  child: const Text("REGISTER NOW"),
+                  child: const Text(
+                    "REGISTER NOW",
+                    style: TextStyle(color: Colors.blue),
+                  ),
                 ),
               ],
             )

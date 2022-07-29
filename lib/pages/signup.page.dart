@@ -10,7 +10,7 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Container(
           color: Colors.purple[50],
           child: Column(
@@ -33,13 +33,15 @@ class _SignUpPageState extends State<SignUpPage> {
                       border: Border.all(color: Colors.white)),
                   child: const TextField(
                     decoration: InputDecoration(
-                        border: InputBorder.none, hintText: "Enter Your Name: "),
+                        border: InputBorder.none,
+                        hintText: "Enter Your Name: "),
                   ),
                 ),
               ),
               const SizedBox(
                 height: 20,
-              ), Padding(
+              ),
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 26),
                 child: Container(
                   padding: const EdgeInsets.only(left: 20),
@@ -49,13 +51,15 @@ class _SignUpPageState extends State<SignUpPage> {
                       border: Border.all(color: Colors.white)),
                   child: const TextField(
                     decoration: InputDecoration(
-                        border: InputBorder.none, hintText: "Enter Your E-mail:"),
+                        border: InputBorder.none,
+                        hintText: "Enter Your E-mail:"),
                   ),
                 ),
               ),
               const SizedBox(
                 height: 20,
-              ), Padding(
+              ),
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 26),
                 child: Container(
                   padding: const EdgeInsets.only(left: 20),
@@ -90,20 +94,21 @@ class _SignUpPageState extends State<SignUpPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.00),
                 child: ElevatedButton(
-                onPressed: () { },
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.purple)),
-                child: const Text("Create a new account",style: TextStyle(fontSize: 18),),
+                  onPressed: () {},
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.purple)),
+                  child: const Text(
+                    "Create a new account",
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-            
             ],
           )),
     );
-    
   }
 }

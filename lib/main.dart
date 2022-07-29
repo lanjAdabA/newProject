@@ -3,31 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:newproject/routers/router.gr.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
-    final _appRouter = AppRouter();
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerDelegate: _appRouter.delegate(),      
+      routerDelegate: _appRouter.delegate(),
       routeInformationParser: _appRouter.defaultRouteParser(),
-                  
-       debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       title: 'New Project',
       theme: ThemeData(
-    
-        primarySwatch: Colors.blue,
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.white70),
+        primarySwatch: Colors.grey,
       ),
-    
     );
   }
 }
- class HomePage extends StatefulWidget {
+
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -37,7 +36,7 @@ class MyApp extends StatelessWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return   Scaffold(
+    return Scaffold(
         backgroundColor: Colors.purple[50],
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -83,11 +82,14 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.00),
-              child: 
-              ElevatedButton(onPressed: (){}, style:   ButtonStyle(backgroundColor:MaterialStateProperty.all<Color>(Colors.purple)), child: const Text("sign in"),)
-            
-            ),
+                padding: const EdgeInsets.symmetric(horizontal: 25.00),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.purple)),
+                  child: const Text("sign in"),
+                )),
             const SizedBox(
               height: 20,
             ),
@@ -98,9 +100,11 @@ class _HomePageState extends State<HomePage> {
                   "Not a Member ?",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                TextButton(onPressed: (){
-          context.router.push(const SignUpRoute());}, child: const Text("REGISTER NOW"))
-             
+                TextButton(
+                    onPressed: () {
+                      context.router.push(const SignUpRoute());
+                    },
+                    child: const Text("REGISTER NOW"))
               ],
             )
           ],
