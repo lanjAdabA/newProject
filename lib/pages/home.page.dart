@@ -242,28 +242,31 @@ class _HomePageState extends State<ContentHomePage> {
                     addRepaintBoundaries: true,
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
-                      return Row(
-                        children: [
-                          // Center(
-                          //   child: Text("data"),
-                          // )
-                          CircleAvatar(
-                            radius: 50,
-                            backgroundImage:
-                                AssetImage(categorylist[index]["assetimg"]),
-                          ),
-                          ClipOval(
-                              child: SizedBox(
-                            height: h / 8,
-                            child: Image(
-                                image: AssetImage(
-                                    categorylist[index]["assetimg"])),
-                          )),
-                          SizedBox(
-                              width: w / 3.8,
-                              child: Center(
-                                  child: Text(categorylist[index]["name"])))
-                        ],
+                      return Card(
+                        color: Colors.amber[200],
+                        child: Row(
+                          children: [
+                            // Center(
+                            //   child: Text("data"),
+                            // )
+                            CircleAvatar(
+                              radius: 50,
+                              backgroundImage:
+                                  AssetImage(categorylist[index]["assetimg"]),
+                            ),
+                            ClipOval(
+                                child: SizedBox(
+                              height: h / 8,
+                              child: Image(
+                                  image: AssetImage(
+                                      categorylist[index]["assetimg"])),
+                            )),
+                            SizedBox(
+                                width: w / 3.8,
+                                child: Center(
+                                    child: Text(categorylist[index]["name"])))
+                          ],
+                        ),
                       );
                     }),
               ),
